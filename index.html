@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Jacky Wang | 个人主页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fc 0%, #e9eef5 100%);
+            font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            color: #1a2c3e;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* 头部卡片 */
+        .hero {
+            background: linear-gradient(135deg, #0f2b3d 0%, #1a3a4f 100%);
+            border-radius: 48px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-desc {
+            max-width: 80%;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* 统计徽章 */
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(4px);
+            border-radius: 60px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* 通用卡片样式 */
+        .card {
+            background: white;
+            border-radius: 36px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(125deg, #1a3a4f, #2c5a74);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+            border-left: 4px solid #2c7da0;
+            padding-left: 1rem;
+        }
+
+        /* 教育背景网格 */
+        .edu-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        .edu-item {
+            background: #f0f4fa;
+            border-radius: 60px;
+            padding: 0.6rem 1.5rem;
+            font-weight: 600;
+            color: #1e4a6e;
+            font-size: 1rem;
+        }
+
+        /* 技能标签 */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #eef2ff, #e6edf5);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1f4e6e;
+            border: 1px solid rgba(44, 122, 160, 0.2);
+        }
+
+        /* 项目网格 */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .project-card {
+            background: #fafcff;
+            border-radius: 28px;
+            padding: 1.5rem;
+            transition: all 0.2s;
+            border: 1px solid #e9edf2;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            border-color: #2c7da0;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
+        }
+
+        .project-icon {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a2c3e;
+        }
+
+        .project-desc {
+            font-size: 0.85rem;
+            color: #5f7d9c;
+            line-height: 1.4;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #2c7da0;
+        }
+
+        /* 联系区域 */
+        .contact {
+            text-align: center;
+            background: linear-gradient(135deg, #f8fafd, #ffffff);
+            border: 1px solid #e2ecfe;
+        }
+
+        .contact-badge {
+            background: #eef2fa;
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            color: #2c5a74;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            color: #7a8ea8;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 700px) {
+            .container { padding: 1.2rem; }
+            .hero { padding: 2rem 1.5rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-desc { max-width: 100%; }
+            .card-title { font-size: 1.4rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 头部区域 -->
+    <div class="hero">
+        <h1>Jacky Wang</h1>
+        <div class="tagline">全栈开发者 · 软硬件专家 · AI 探索者</div>
+        <div class="hero-desc">
+            拥有三十余年网络管理与软硬件开发经验，精通 Python、C#、Arduino 等编程语言，开发过多款软硬件产品。
+            2026 年投身 AI 应用研究，致力于将智能技术融入实用工具。
+        </div>
+        <div class="stats">
+            <div class="stat-item">📅 30+ 年技术沉淀</div>
+            <div class="stat-item">🤖 5+ AI 原创应用</div>
+            <div class="stat-item">🔧 全栈 & 嵌入式</div>
+        </div>
+    </div>
+
+    <!-- 教育背景 -->
+    <div class="card">
+        <div class="card-title">🎓 教育背景</div>
+        <div class="edu-grid">
+            <div class="edu-item">复旦大学</div>
+            <div class="edu-item">清华大学</div>
+            <div class="edu-item">中国海洋大学</div>
+        </div>
+        <div style="margin-top: 0.8rem; font-size: 0.85rem; color: #5f7d9c;">
+            跨越网络与软硬件开发，多元学术视野
+        </div>
+    </div>
+
+    <!-- 核心技术能力 -->
+    <div class="card">
+        <div class="card-title">⚙️ 技术栈与专长</div>
+        <div class="skills">
+            <span class="skill-tag">🐍 Python</span>
+            <span class="skill-tag">🖥️ C# / .NET</span>
+            <span class="skill-tag">⚡ Arduino / 嵌入式</span>
+            <span class="skill-tag">🧠 AI 应用开发</span>
+            <span class="skill-tag">🌐 全栈 Web</span>
+            <span class="skill-tag">📡 网络架构</span>
+            <span class="skill-tag">🔌 软硬件集成</span>
+            <span class="skill-tag">🤖 大语言模型应用</span>
+        </div>
+        <div style="margin-top: 1rem; font-size: 0.9rem; color: #4a6a85;">
+            从底层硬件控制到上层 AI 应用，构建完整技术闭环。
+        </div>
+    </div>
+
+    <!-- AI 应用作品集 -->
+    <div class="card">
+        <div class="card-title">✨ AI 驱动应用精选</div>
+        <div class="projects-grid">
+            <!-- BMI 计算器 -->
+            <a href="https://jackywang869-cmyk.github.io/bmi-calculator/" target="_blank" rel="noopener noreferrer" class="project-card">
+                <div class="project-icon">⚖️</div>
+                <div class="project-name">BMI 计算器</div>
+                <div class="project-desc">智能身体质量指数分析，支持公制/英制切换，视觉化里程表盘与健康建议。</div>
+                <div class="project-link">体验应用 →</div>
+            </a>
+            <!-- 五子棋 -->
+            <a href="https://jackywang869-cmyk.github.io/gomoku/" target="_blank" rel="noopener noreferrer" class="project-card">
+                <div class="project-icon">⚫</div>
+                <div class="project-name">五子棋 AI</div>
+                <div class="project-desc">经典五子棋对弈，包含智能算法，可体验人机对战与策略博弈。</div>
+                <div class="project-link">体验应用 →</div>
+            </a>
+            <!-- 中国象棋 -->
+            <a href="https://jackywang869-cmyk.github.io/ChineseChess/" target="_blank" rel="noopener noreferrer" class="project-card">
+                <div class="project-icon">♜</div>
+                <div class="project-name">中国象棋</div>
+                <div class="project-desc">传统象棋交互界面，内置象棋规则引擎，支持人机对弈。</div>
+                <div class="project-link">体验应用 →</div>
+            </a>
+            <!-- 24点计算器 -->
+            <a href="https://jackywang869-cmyk.github.io/24/" target="_blank" rel="noopener noreferrer" class="project-card">
+                <div class="project-icon">🔢</div>
+                <div class="project-name">24点挑战</div>
+                <div class="project-desc">随机扑克牌组合，求解24点算式，锻炼心算与组合思维。</div>
+                <div class="project-link">体验应用 →</div>
+            </a>
+            <!-- 记账本 -->
+            <a href="https://jackywang869-cmyk.github.io/account/" target="_blank" rel="noopener noreferrer" class="project-card">
+                <div class="project-icon">📒</div>
+                <div class="project-name">智能记账本</div>
+                <div class="project-desc">月度收支管理，可视化报表，轻松掌握财务状况。</div>
+                <div class="project-link">体验应用 →</div>
+            </a>
+        </div>
+        <div style="margin-top: 1.2rem; font-size: 0.8rem; color: #6c8dad; background: #f0f5fc; padding: 0.6rem 1rem; border-radius: 60px; text-align: center;">
+            💡 以上应用均结合 AI 辅助开发与现代前端技术，持续迭代中。
+        </div>
+    </div>
+
+    <!-- 联系方式与社交 -->
+    <div class="card contact">
+        <div class="card-title" style="border-left-color: transparent; padding-left: 0;">📬 保持联系</div>
+        <div class="contact-badge">
+            📧 jackywang@gmail.com
+        </div>
+        <div class="contact-badge" style="margin-left: 0.5rem;">
+            💻 GitHub: jackywang869-cmyk
+        </div>
+        <div style="margin-top: 1rem; font-size: 0.85rem;">
+            欢迎交流技术、AI 应用与软硬件创新。
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Jacky Wang · 三十余载技术深耕，用 AI 创造实用工具。
+    </footer>
+</div>
+</body>
+</html>
